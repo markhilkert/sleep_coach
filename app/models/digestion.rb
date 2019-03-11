@@ -1,0 +1,2 @@
+class Digestion < ApplicationRecord
+end
