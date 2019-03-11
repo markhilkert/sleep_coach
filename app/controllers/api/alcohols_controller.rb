@@ -1,7 +1,7 @@
 class Api::AlcoholsController < ApplicationController
 
   def index
-    @alcohol = Alcohol.all 
+    @alcohols = Alcohol.all 
     render 'index.json.jbuilder'
   end
 
