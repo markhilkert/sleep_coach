@@ -9,6 +9,7 @@ json.clock_visible sleep.clock_visible
 json.electronics_in_room sleep.electronics_in_room
 json.lie_in_bed sleep.lie_in_bed
 json.room_temperature sleep.room_temperature
+# json.user_id sleep.user_id
 
 json.alcohols do
   json.array! sleep.alcohols.each do |alcohol|
