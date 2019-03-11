@@ -1,0 +1,2 @@
+class MorningSun < Event
+end

@@ -1,0 +1,2 @@
+class Relax < Event
+end
