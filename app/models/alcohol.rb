@@ -1,0 +1,2 @@
+class Alcohol < Digestion
+end

@@ -1,0 +1,2 @@
+class LateMeal < Digestion
+end
