@@ -8,9 +8,8 @@ class Api::NapsController < ApplicationController
   def create
     @nap = Nap.new(
                         sleep_id: params[:sleep_id],
-                        amount: params[:amount],
+                        duration: params[:duration],
                         time: params[:time],
-                        increased_impact: params[:increased_impact],
                         type: "nap"
                         )
     
@@ -29,10 +28,8 @@ class Api::NapsController < ApplicationController
   def update
     @nap = Nap.find(params[:id])
 
-    @nap.sleep_id = params[:sleep_id] || @nap.sleep_id
-    @nap.amount = params[:amount] || @nap.amount
     @nap.time = params[:time] || @nap.time
-    @nap.increased_impact = params[:increased_impact] || @nap.increased_impact
+    @nap.duration = params[:duration] || @nap.duration
 
     if @nap.save
       render 'show.json.jbuilder'

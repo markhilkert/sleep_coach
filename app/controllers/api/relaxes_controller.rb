@@ -8,9 +8,8 @@ class Api::RelaxesController < ApplicationController
   def create
     @relax = Relax.new(
                         sleep_id: params[:sleep_id],
-                        amount: params[:amount],
+                        duration: params[:duration],
                         time: params[:time],
-                        increased_impact: params[:increased_impact],
                         type: "relax"
                         )
     
@@ -29,10 +28,8 @@ class Api::RelaxesController < ApplicationController
   def update
     @relax = Relax.find(params[:id])
 
-    @relax.sleep_id = params[:sleep_id] || @relax.sleep_id
-    @relax.amount = params[:amount] || @relax.amount
     @relax.time = params[:time] || @relax.time
-    @relax.increased_impact = params[:increased_impact] || @relax.increased_impact
+    @relax.duration = params[:duration] || @relax.duration
 
     if @relax.save
       render 'show.json.jbuilder'
@@ -44,7 +41,7 @@ class Api::RelaxesController < ApplicationController
   def destroy
     relax = Relax.find(params[:id])
     relax.destroy
-    render json: {message: "Successfully removed relaxation."}
+    render json: {message: "Successfully removed relax."}
   end
 
 end
