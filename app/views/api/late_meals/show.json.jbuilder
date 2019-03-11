@@ -1,0 +1,1 @@
+json.partial! @late_meal, partial: "late_meal", as: :late_meal

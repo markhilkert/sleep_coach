@@ -1,0 +1,1 @@
+json.partial! @caffeine, partial: "caffeine", as: :caffeine
