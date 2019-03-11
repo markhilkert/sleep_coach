@@ -44,7 +44,7 @@ class Api::NapsController < ApplicationController
   def destroy
     nap = Nap.find(params[:id])
     nap.destroy
-    render json: {message: "Successfully removed morning sun exposure."}
+    render json: {message: "Successfully removed nap."}
   end
 
 end

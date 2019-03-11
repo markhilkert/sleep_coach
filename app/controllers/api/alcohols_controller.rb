@@ -44,7 +44,7 @@ class Api::AlcoholsController < ApplicationController
   def destroy
     alcohol = Alcohol.find(params[:id])
     alcohol.destroy
-    render json: {message: "Successfully removed morning sun exposure."}
+    render json: {message: "Successfully removed alcohol."}
   end
 
 end
