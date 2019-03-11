@@ -1,7 +1,7 @@
 class Api::MorningSunsController < ApplicationController
 
   def index
-    @morning_sun = MorningSun.all 
+    @morning_suns = MorningSun.all 
     render 'index.json.jbuilder'
   end
 
