@@ -6,7 +6,7 @@ class Api::CaffeinesController < ApplicationController
   end
 
   def create
-    @caffine = Caffeine.new(
+    @caffeine = Caffeine.new(
                         sleep_id: params[:sleep_id],
                         duration: params[:duration],
                         type: "caffeine"
