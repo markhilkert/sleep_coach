@@ -1,0 +1,1 @@
+json.array! @sleeps, partial: "sleep", as: :sleep

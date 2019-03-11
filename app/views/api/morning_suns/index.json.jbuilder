@@ -1,0 +1,1 @@
+json.array! @morning_suns, partial: "morning_sun", as: :morning_sun
