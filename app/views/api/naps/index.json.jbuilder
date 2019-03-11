@@ -1,0 +1,1 @@
+json.array! @naps, partial: "nap", as: :nap

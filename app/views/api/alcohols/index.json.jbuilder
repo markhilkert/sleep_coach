@@ -1,1 +1,1 @@
-json.array! @cats, partial: "cat", as: :cat  
+json.array! @alcohols, partial: "alcohol", as: :alcohol  

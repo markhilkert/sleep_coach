@@ -8,6 +8,7 @@ class Api::ExercisesController < ApplicationController
     @exercise = Exercise.new(
                         sleep_id: params[:sleep_id],
                         duration: params[:duration],
+                        time: params[:time],
                         type: "exercise"
                         )
     
@@ -26,7 +27,7 @@ class Api::ExercisesController < ApplicationController
   def update
     @exercise = Exercise.find(params[:id])
 
-    @exercise.sleep_id = params[:sleep_id] || @exercise.sleep_id
+    @exercise.time = params[:time] || @exercise.time
     @exercise.duration = params[:duration] || @exercise.duration
 
     if @exercise.save

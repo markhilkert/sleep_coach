@@ -9,6 +9,7 @@ class Api::MorningSunsController < ApplicationController
     @morning_sun = MorningSun.new(
                         sleep_id: params[:sleep_id],
                         duration: params[:duration],
+                        time: params[:time],
                         type: "morning_sun"
                         )
     
@@ -27,7 +28,7 @@ class Api::MorningSunsController < ApplicationController
   def update
     @morning_sun = MorningSun.find(params[:id])
 
-    @morning_sun.sleep_id = params[:sleep_id] || @morning_sun.sleep_id
+    @morning_sun.time = params[:time] || @morning_sun.time
     @morning_sun.duration = params[:duration] || @morning_sun.duration
 
     if @morning_sun.save
