@@ -1,6 +1,6 @@
 class Api::ExercisesController < ApplicationController
   def index
-    @exercise = Exercise.all 
+    @exercises = Exercise.all 
     render 'index.json.jbuilder'
   end
 

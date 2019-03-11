@@ -1,7 +1,7 @@
 class Api::NapsController < ApplicationController
 
   def index
-    @nap = Nap.all 
+    @naps = Nap.all 
     render 'index.json.jbuilder'
   end
 

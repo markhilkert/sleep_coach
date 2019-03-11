@@ -1,7 +1,7 @@
 class Api::LateMealsController < ApplicationController
 
   def index
-    @late_meal = LateMeal.all 
+    @late_meals = LateMeal.all 
     render 'index.json.jbuilder'
   end
 

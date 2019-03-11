@@ -1,7 +1,7 @@
 class Api::RelaxesController < ApplicationController
 
   def index
-    @relax = Relax.all 
+    @relaxes = Relax.all 
     render 'index.json.jbuilder'
   end
 
