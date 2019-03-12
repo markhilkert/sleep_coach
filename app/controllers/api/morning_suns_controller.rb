@@ -9,8 +9,7 @@ class Api::MorningSunsController < ApplicationController
     @morning_sun = MorningSun.new(
                         sleep_id: params[:sleep_id],
                         duration: params[:duration],
-                        time: params[:time],
-                        type: "morning_sun"
+                        time: params[:time]
                         )
     
     if @morning_sun.save

@@ -7,11 +7,10 @@ class Api::NapsController < ApplicationController
 
   def create
     @nap = Nap.new(
-                        sleep_id: params[:sleep_id],
-                        duration: params[:duration],
-                        time: params[:time],
-                        type: "nap"
-                        )
+                    sleep_id: params[:sleep_id],
+                    duration: params[:duration],
+                    time: params[:time]
+                    )
     
     if @nap.save
       render 'show.json.jbuilder'

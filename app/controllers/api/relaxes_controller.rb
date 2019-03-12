@@ -9,8 +9,7 @@ class Api::RelaxesController < ApplicationController
     @relax = Relax.new(
                         sleep_id: params[:sleep_id],
                         duration: params[:duration],
-                        time: params[:time],
-                        type: "relax"
+                        time: params[:time]
                         )
     
     if @relax.save
