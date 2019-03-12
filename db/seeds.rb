@@ -61,5 +61,5 @@ Nap.create!(
 Relax.new(
           sleep_id: 1,
           duration: 25.5,
-          time: Time.parse("8:45pm")
+          time: Time.parse("8:45pmr")
           )
