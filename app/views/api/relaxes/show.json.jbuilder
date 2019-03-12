@@ -1,1 +1,1 @@
-json.partial! @nap, partial: "nap", as: :nap
+json.partial! @relax, partial: "relax", as: :relax
