@@ -1,5 +1,4 @@
 class Api::SleepsController < ApplicationController
-
   def index
     @sleeps = Sleep.all 
     render 'index.json.jbuilder'
@@ -58,5 +57,4 @@ class Api::SleepsController < ApplicationController
     sleep.destroy
     render json: {message: "Successfully removed sleep."}
   end
-  
 end
