@@ -10,8 +10,7 @@ class Api::LateMealsController < ApplicationController
                         sleep_id: params[:sleep_id],
                         amount: params[:amount],
                         time: params[:time],
-                        increased_impact: params[:increased_impact],
-                        type: "late_meal"
+                        increased_impact: params[:increased_impact]
                         )
     
     if @late_meal.save

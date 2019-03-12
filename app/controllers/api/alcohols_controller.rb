@@ -10,8 +10,7 @@ class Api::AlcoholsController < ApplicationController
                         sleep_id: params[:sleep_id],
                         amount: params[:amount],
                         time: params[:time],
-                        increased_impact: params[:increased_impact],
-                        type: "alcohol"
+                        increased_impact: params[:increased_impact]
                         )
     
     if @alcohol.save

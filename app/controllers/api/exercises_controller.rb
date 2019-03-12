@@ -8,8 +8,7 @@ class Api::ExercisesController < ApplicationController
     @exercise = Exercise.new(
                         sleep_id: params[:sleep_id],
                         duration: params[:duration],
-                        time: params[:time],
-                        type: "exercise"
+                        time: params[:time]
                         )
     
     if @exercise.save
