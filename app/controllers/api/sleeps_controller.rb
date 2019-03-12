@@ -6,7 +6,7 @@ class Api::SleepsController < ApplicationController
 
   def create
     @sleep = Sleep.new(
-                        # user_id: current_user.id,
+                        user_id: current_user.id,
                         start_time: params[:start_time],
                         end_time: params[:end_time],
                         good_sleep: params[:good_sleep],
@@ -56,5 +56,63 @@ class Api::SleepsController < ApplicationController
     sleep = Sleep.find(params[:id])
     sleep.destroy
     render json: {message: "Successfully removed sleep."}
+  end
+
+  def start
+    # Josh Note: Want to make sure you aren't starting multiple sleeps. So, first have this do a get call, read the last sleep, and only run if the last sleep has an end time. For the end button, make sure the last sleep has a start time but no end time.
+    @sleep = Sleep.new(
+                        user_id: current_user.id,
+                        start_time: Time.now
+                      )
+
+    if @sleep.save
+      render 'show.json.jbuilder'
+    else
+      render json: {errors: @sleep.errors.full_messages}, status: :unprocessable_entity
+    end
+  end
+
+  def end_good
+    @sleep = Sleep.last
+    @sleep.end_time = Time.now
+    @sleep.good_sleep = true
+
+    if @sleep.save
+      render 'show.json.jbuilder'
+    else
+      render json: {errors: @sleep.errors.full_messages}, status: :unprocessable_entity
+    end
+  end
+
+  def end_bad
+    @sleep = Sleep.last
+    @sleep.end_time = Time.now
+    @sleep.good_sleep = false
+
+    if @sleep.save
+      render 'show.json.jbuilder'
+    else
+      render json: {errors: @sleep.errors.full_messages}, status: :unprocessable_entity
+    end
+  end
+
+  def toggle
+    sleep = Sleep.last
+
+    if sleep.end_time
+      @sleep = Sleep.new(
+                          user_id: current_user.id,
+                          start_time: Time.now
+                        )
+    else
+      @sleep = sleep
+      @sleep.end_time = Time.now
+    end
+
+    if @sleep.save
+      render 'show.json.jbuilder'
+    else
+      render json: {errors: @sleep.errors.full_messages}, status: :unprocessable_entity
+    end
   end
 end

@@ -5,12 +5,18 @@ Rails.application.routes.draw do
 
     post "/sessions" => 'sessions#create'
 
+    post "/sleeps/start" => 'sleeps#start'
+    post "/sleeps/end_good" => 'sleeps#end_good'
+    post "/sleeps/end_bad" => 'sleeps#end_bad'
+    post "/sleeps/toggle" => 'sleeps#toggle'
+
     get "/sleeps" => 'sleeps#index'
     get "/sleeps/:id" => 'sleeps#show'
     get '/sleeps/new' => 'sleeps#new'
     post "/sleeps" => 'sleeps#create'
     patch "/sleeps/:id" => 'sleeps#update'
     delete "/sleeps/:id" => 'sleeps#destroy'
+
 
     get "/exercises" => 'exercises#index'
     get "/exercises/:id" => 'exercises#show'
