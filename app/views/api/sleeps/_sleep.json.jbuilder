@@ -63,7 +63,7 @@ json.naps do
 end
 
 json.relaxes do
-  json.array! sleep.relaxs.each do |relax|
+  json.array! sleep.relaxes.each do |relax|
     json.id relax.id
     json.duration relax.duration
     json.time relax.time
