@@ -1,4 +1,6 @@
 class Api::SleepsController < ApplicationController
+  before_action :authenticate_user
+
   def index
     @sleeps = Sleep.all 
     render 'index.json.jbuilder'

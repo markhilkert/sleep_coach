@@ -1,4 +1,5 @@
 class Api::CaffeinesController < ApplicationController
+  before_action :authenticate_user
 
   def index
       @caffeines = Caffeine.all 

@@ -1,4 +1,5 @@
 class Api::AlcoholsController < ApplicationController
+  before_action :authenticate_user
 
   def index
     @alcohols = Alcohol.all 
