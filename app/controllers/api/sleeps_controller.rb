@@ -60,7 +60,7 @@ class Api::SleepsController < ApplicationController
 
   def start
     # Josh Note: Want to make sure you aren't starting multiple sleeps. So, first have this do a get call, read the last sleep, and only run if the last sleep has an end time. For the end button, make sure the last sleep has a start time but no end time.
-    @sleep = Sleep.new(
+    @sleep = current_user.sleeps.new(
                         user_id: current_user.id,
                         start_time: Time.now
                       )
@@ -73,7 +73,7 @@ class Api::SleepsController < ApplicationController
   end
 
   def end_good
-    @sleep = Sleep.last
+    @sleep = current_user.sleeps.last
     @sleep.end_time = Time.now
     @sleep.good_sleep = true
 
@@ -85,7 +85,7 @@ class Api::SleepsController < ApplicationController
   end
 
   def end_bad
-    @sleep = Sleep.last
+    @sleep = current_user.sleeps.last
     @sleep.end_time = Time.now
     @sleep.good_sleep = false
 
@@ -97,7 +97,7 @@ class Api::SleepsController < ApplicationController
   end
 
   def toggle
-    sleep = Sleep.last
+    sleep = current_user.sleeps.last
 
     if sleep.end_time
       @sleep = Sleep.new(
