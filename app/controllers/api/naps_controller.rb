@@ -1,4 +1,5 @@
 class Api::NapsController < ApplicationController
+  before_action :authenticate_user
 
   def index
     @naps = Nap.all 

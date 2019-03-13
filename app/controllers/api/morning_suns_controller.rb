@@ -1,4 +1,5 @@
 class Api::MorningSunsController < ApplicationController
+  before_action :authenticate_user
 
   def index
     @morning_suns = MorningSun.all 
