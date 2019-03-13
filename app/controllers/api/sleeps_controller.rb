@@ -36,16 +36,18 @@ class Api::SleepsController < ApplicationController
   def update
     @sleep = Sleep.find(params[:id])
 
-    sleep.start_time = params[:start_time] || @sleep.start_time
-    sleep.end_time = params[:end_time] || @sleep.end_time
-    sleep.good_sleep = params[:good_sleep] || @sleep.good_sleep
-    sleep.bath_before_bed = params[:bath_before_bed] || @sleep.bath_before_bed
-    sleep.dark_room = params[:dark_room] || @sleep.dark_room
-    sleep.cool_room = params[:cool_room] || @sleep.cool_room
-    sleep.clock_visible = params[:clock_visible] || @sleep.clock_visible
-    sleep.electronics_in_room = params[:electronics_in_room] || @sleep.electronics_in_room
-    sleep.lie_in_bed = params[:lie_in_bed] || @sleep.lie_in_bed
-    sleep.room_temperature = params[:room_temperature] || @sleep.room_temperature
+
+    @sleep.start_time = params[:start_time] || @sleep.start_time
+    @sleep.end_time = params[:end_time] || @sleep.end_time
+    @sleep.good_sleep = params[:good_sleep] || @sleep.good_sleep
+    @sleep.bath_before_bed = params[:bath_before_bed] || @sleep.bath_before_bed
+    @sleep.dark_room = params[:dark_room] || @sleep.dark_room
+    @sleep.cool_room = params[:cool_room] || @sleep.cool_room
+    @sleep.clock_visible = params[:clock_visible] || @sleep.clock_visible
+    @sleep.electronics_in_room = params[:electronics_in_room] || @sleep.electronics_in_room
+    @sleep.lie_in_bed = params[:lie_in_bed] || @sleep.lie_in_bed
+    @sleep.room_temperature = params[:room_temperature] || @sleep.room_temperature
+
 
     if @sleep.save
       render 'show.json.jbuilder'
