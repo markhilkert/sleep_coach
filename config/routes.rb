@@ -6,8 +6,8 @@ Rails.application.routes.draw do
     post "/sessions" => 'sessions#create'
 
     post "/sleeps/start" => 'sleeps#start'
-    post "/sleeps/end_good" => 'sleeps#end_good'
-    post "/sleeps/end_bad" => 'sleeps#end_bad'
+    patch "/sleeps/end_good" => 'sleeps#end_good'
+    patch "/sleeps/end_bad" => 'sleeps#end_bad'
     post "/sleeps/toggle" => 'sleeps#toggle'
 
     get "/sleeps" => 'sleeps#index'
