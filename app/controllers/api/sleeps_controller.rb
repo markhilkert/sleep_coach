@@ -2,7 +2,7 @@ class Api::SleepsController < ApplicationController
   # before_action :authenticate_user
 
   def index
-    @sleeps = Sleep.all 
+    @sleeps = current_user.sleeps
     render 'index.json.jbuilder'
   end
 
@@ -47,7 +47,7 @@ class Api::SleepsController < ApplicationController
     @sleep.electronics_in_room = params[:electronics_in_room] || @sleep.electronics_in_room
     @sleep.lie_in_bed = params[:lie_in_bed] || @sleep.lie_in_bed
     @sleep.room_temperature = params[:room_temperature] || @sleep.room_temperature
-
+    @sleep.user_id = params[:user_id] || @sleep.user_id
 
     if @sleep.save
       render 'show.json.jbuilder'
