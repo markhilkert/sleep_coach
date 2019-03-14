@@ -12,7 +12,7 @@ class Sleep < ApplicationRecord
   has_many :relaxes
 
 
-  def self.friendly_sleep_time(time_in_seconds)
+  def friendly_sleep_time(time_in_seconds)
     time_in_hours = time_in_seconds / 60 / 60.0
     hours = time_in_hours.floor
     minutes = (time_in_hours - hours) * 60
@@ -25,9 +25,8 @@ class Sleep < ApplicationRecord
     time_message
   end
 
-  def self.last_night_sleep_time
-    sleep = Sleep.first
-    time_in_seconds = sleep.end_time - sleep.start_time
+  def last_night_sleep_time(sleep_start_time, sleep_end_time)
+    time_in_seconds = sleep_end_time - sleep_start_time
     friendly_sleep_time(time_in_seconds)
   end
 end
