@@ -11,4 +11,7 @@ class Sleep < ApplicationRecord
   has_many :naps
   has_many :relaxes
 
+  def time_in_bed
+    time_in_seconds = self.end_time - self.start_time
+  end
 end
