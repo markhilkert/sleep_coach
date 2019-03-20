@@ -11,39 +11,28 @@ json.lie_in_bed sleep.lie_in_bed
 json.room_temperature sleep.room_temperature
 json.user_id sleep.user_id
 
-json.alcohols do
-  json.array! sleep.alcohols.each do |alcohol|
-    json.id alcohol.id
-    json.amount alcohol.amount
-    json.time alcohol.time
-    json.increased_impact alcohol.increased_impact
-  end  
+json.alcohol do
+  if sleep.alcohol
+    json.partial! sleep.alcohol, partial: 'api/alcohols/alcohol', as: :alcohol
+  end
 end
 
-json.caffeines do
-  json.array! sleep.caffeines.each do |caffeine|
-    json.id caffeine.id
-    json.amount caffeine.amount
-    json.time caffeine.time
-    json.increased_impact caffeine.increased_impact
-  end  
+json.caffeine do
+  if sleep.caffeine
+    json.partial! sleep.caffeine, partial: 'api/caffeines/caffeine', as: :caffeine
+  end
 end
 
-json.late_meals do
-  json.array! sleep.late_meals.each do |late_meal|
-    json.id late_meal.id
-    json.amount late_meal.amount
-    json.time late_meal.time
-    json.increased_impact late_meal.increased_impact
-  end  
+json.late_meal do
+  if sleep.late_meal
+    json.partial! sleep.late_meal, partial: 'api/late_meals/late_meal', as: :late_meal
+  end
 end
 
-json.morning_suns do
-  json.array! sleep.morning_suns.each do |morning_sun|
-    json.id morning_sun.id
-    json.duration morning_sun.duration
-    json.time morning_sun.time
-  end  
+json.morning_sun do
+  if sleep.morning_sun
+    json.partial! sleep.morning_sun, partial: 'api/morning_suns/morning_sun', as: :morning_sun
+  end
 end
 
 json.exercises do
@@ -62,10 +51,8 @@ json.naps do
   end  
 end
 
-json.relaxes do
-  json.array! sleep.relaxes.each do |relax|
-    json.id relax.id
-    json.duration relax.duration
-    json.time relax.time
-  end  
+json.relax do
+  if sleep.relax
+    json.partial! sleep.relax, partial: 'api/relaxes/relax', as: :relax
+  end
 end
