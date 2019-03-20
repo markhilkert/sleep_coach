@@ -1,5 +1,5 @@
 class Api::SleepsController < ApplicationController
-  before_action :authenticate_user
+  # before_action :authenticate_user
 
   def index
     @sleeps = current_user.sleeps
