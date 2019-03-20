@@ -14,24 +14,40 @@ json.user_id sleep.user_id
 json.alcohol do
   if sleep.alcohol
     json.partial! sleep.alcohol, partial: 'api/alcohols/alcohol', as: :alcohol
+  else
+    json.amount 0
+    json.time 0
+    json.increased_impact 0
   end
 end
 
 json.caffeine do
   if sleep.caffeine
     json.partial! sleep.caffeine, partial: 'api/caffeines/caffeine', as: :caffeine
+  else
+    json.amount 0
+    json.time 0
+    json.increased_impact 0
   end
 end
 
 json.late_meal do
   if sleep.late_meal
     json.partial! sleep.late_meal, partial: 'api/late_meals/late_meal', as: :late_meal
+  else
+    json.amount 0
+    json.time 0
+    json.increased_impact 0
   end
 end
 
 json.morning_sun do
   if sleep.morning_sun
     json.partial! sleep.morning_sun, partial: 'api/morning_suns/morning_sun', as: :morning_sun
+  else
+    json.amount 0
+    json.time 0
+    json.increased_impact 0
   end
 end
 
@@ -54,5 +70,9 @@ end
 json.relax do
   if sleep.relax
     json.partial! sleep.relax, partial: 'api/relaxes/relax', as: :relax
+  else
+    json.amount 0
+    json.time 0
+    json.increased_impact 0
   end
 end
