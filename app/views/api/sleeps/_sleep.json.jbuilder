@@ -52,11 +52,13 @@ json.morning_sun do
 end
 
 json.exercises do
-  json.array! sleep.exercises.each do |exercise|
-    json.id exercise.id
-    json.duration exercise.duration
-    json.time exercise.time
-  end  
+  if sleep.exercises
+    json.array! sleep.exercises.each do |exercise|
+      json.id exercise.id
+      json.duration exercise.duration
+      json.time exercise.time
+    end  
+  end
 end
 
 json.naps do
