@@ -26,7 +26,7 @@ class Sleep < ApplicationRecord
   end
 
   def time_in_bed
-    time_in_seconds = self.end_time - self.start_time
+    time_in_seconds = self.end_time - self.start_time if self.end_time
   end
 
   def hours_in_bed

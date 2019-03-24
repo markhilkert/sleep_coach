@@ -18,12 +18,17 @@ class User < ApplicationRecord
     time_message
   end
 
+  def sleeping
+    !self.sleeps.last.end_time
+  end
+
   def last_night_sleep_time
-    friendly_sleep_time(self.sleeps.last.time_in_bed)
+    friendly_sleep_time(self.sleeps.last.time_in_bed) if !self.sleeping
+    friendly_sleep_time(self.sleeps[-2].time_in_bed) if !self.sleeping
   end
 
   def average_total_sleep_time
-    sleep_times = self.sleeps.map { |sleep| sleep.time_in_bed }
+    sleep_times = self.sleeps.inject([]) { |completed_sleeps, sleep| completed_sleeps << sleep.time_in_bed if sleep.time_in_bed; completed_sleeps }
     avg_time_in_bed = sleep_times.sum / sleep_times.length
     friendly_sleep_time(avg_time_in_bed)
   end
