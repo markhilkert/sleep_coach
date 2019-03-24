@@ -65,9 +65,9 @@ class Api::SleepsController < ApplicationController
   def start
     # Josh Note: Want to make sure you aren't starting multiple sleeps. So, first have this do a get call, read the last sleep, and only run if the last sleep has an end time. For the end button, make sure the last sleep has a start time but no end time.
     @sleep = current_user.sleeps.new(
-                        user_id: current_user.id,
-                        start_time: Time.now
-                      )
+                                      user_id: current_user.id,
+                                      start_time: Time.now
+                                    )
 
     if @sleep.save
       render 'show.json.jbuilder'
