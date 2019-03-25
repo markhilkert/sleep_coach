@@ -10,6 +10,7 @@ json.electronics_in_room sleep.electronics_in_room
 json.lie_in_bed sleep.lie_in_bed
 json.room_temperature sleep.room_temperature
 json.user_id sleep.user_id
+json.sleep_date sleep.sleep_date
 if sleep.end_time
   json.time_in_bed sleep.time_in_bed
   json.hours_in_bed sleep.hours_in_bed
