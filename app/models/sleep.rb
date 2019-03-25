@@ -25,6 +25,10 @@ class Sleep < ApplicationRecord
     time_message
   end
 
+  def sleep_date
+    self.start_time.to_date    
+  end
+
   def time_in_bed
     time_in_seconds = self.end_time - self.start_time
   end
