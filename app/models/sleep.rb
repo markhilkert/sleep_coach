@@ -34,6 +34,6 @@ class Sleep < ApplicationRecord
   end
 
   def hours_in_bed
-    time_in_bed * 1000
+    time_in_bed * 1000 # This is actually miliseconds in bed, need to change this after the presentation
   end
 end
