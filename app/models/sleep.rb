@@ -26,7 +26,7 @@ class Sleep < ApplicationRecord
   end
 
   def sleep_date
-    self.start_time.to_date    
+    self.start_time.to_date.strftime("%m/%d")
   end
 
   def time_in_bed
@@ -34,6 +34,6 @@ class Sleep < ApplicationRecord
   end
 
   def hours_in_bed
-    time_in_bed / 60 / 60.0
+    time_in_bed * 1000
   end
 end
