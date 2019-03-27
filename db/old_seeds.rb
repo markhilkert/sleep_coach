@@ -340,3 +340,69 @@ MorningSun.create!(
                   duration: 15,
                   time: Time.parse("9am")
                   )
+
+Sleep.create!(
+              user_id: 1,
+              start_time: DateTime.new(2019,03,18,22,00),
+              end_time: DateTime.new(2019,03,19,7,45),
+              good_sleep: true,
+              bath_before_bed: false,
+              dark_room: true,
+              cool_room: true,
+              clock_visible: false,
+              electronics_in_room: true,
+              lie_in_bed: false,
+              room_temperature: 70
+              )
+Sleep.create!(
+              user_id: 1,
+              start_time: DateTime.new(2019,03,19,22,25),
+              end_time: DateTime.new(2019,03,20,7,45),
+              good_sleep: true,
+              bath_before_bed: false,
+              dark_room: true,
+              cool_room: true,
+              clock_visible: false,
+              electronics_in_room: true,
+              lie_in_bed: false,
+              room_temperature: 70
+              )
+Sleep.create!(
+              user_id: 1,
+              start_time: DateTime.new(2019,03,20,23,59),
+              end_time: DateTime.new(2019,03,21,5,45),
+              good_sleep: false,
+              bath_before_bed: false,
+              dark_room: true,
+              cool_room: true,
+              clock_visible: false,
+              electronics_in_room: true,
+              lie_in_bed: false,
+              room_temperature: 70
+              )
+Sleep.create!(
+              user_id: 1,
+              start_time: DateTime.new(2019,03,21,22,45),
+              end_time: DateTime.new(2019,03,22,6,45),
+              good_sleep: true,
+              bath_before_bed: false,
+              dark_room: true,
+              cool_room: true,
+              clock_visible: false,
+              electronics_in_room: true,
+              lie_in_bed: false,
+              room_temperature: 70
+              )
+Sleep.create!(
+              user_id: 1,
+              start_time: DateTime.new(2019,03,23,22,00),
+              end_time: DateTime.new(2019,03,24,6,22),
+              good_sleep: false,
+              bath_before_bed: false,
+              dark_room: true,
+              cool_room: true,
+              clock_visible: false,
+              electronics_in_room: true,
+              lie_in_bed: false,
+              room_temperature: 70
+              )
