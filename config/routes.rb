@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     patch "/sleeps/end_good" => 'sleeps#end_good'
     patch "/sleeps/end_bad" => 'sleeps#end_bad'
     post "/sleeps/toggle" => 'sleeps#toggle'
+    delete "/sleeps/destroy_last" => 'sleeps#destroy_last'
 
     get "/sleeps" => 'sleeps#index'
     get "/sleeps/:id" => 'sleeps#show'
