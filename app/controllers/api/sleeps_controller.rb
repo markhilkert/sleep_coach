@@ -62,6 +62,12 @@ class Api::SleepsController < ApplicationController
     render json: {message: "Successfully removed sleep."}
   end
 
+  def destroy_last
+    sleep = current_user.sleeps.last
+    sleep.destroy
+    render json: {message: "Successfully removed sleep."}
+  end
+
   def start
     # Josh Note: Want to make sure you aren't starting multiple sleeps. So, first have this do a get call, read the last sleep, and only run if the last sleep has an end time. For the end button, make sure the last sleep has a start time but no end time.
     @sleep = current_user.sleeps.new(
