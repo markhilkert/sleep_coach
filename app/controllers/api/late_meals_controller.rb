@@ -1,5 +1,5 @@
 class Api::LateMealsController < ApplicationController
-  # before_action :authenticate_user
+  before_action :authenticate_user
 
   def index
     @late_meals = LateMeal.all 
