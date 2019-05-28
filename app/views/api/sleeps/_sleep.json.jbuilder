@@ -16,6 +16,11 @@ if sleep.end_time
   json.hours_in_bed sleep.hours_in_bed
 end
 
+json.formatted do
+  json.simple_start_time sleep.simple_start_time
+  json.simple_end_time sleep.simple_end_time
+end
+
 json.alcohol do
   if sleep.alcohol
     json.partial! sleep.alcohol, partial: 'api/alcohols/alcohol', as: :alcohol

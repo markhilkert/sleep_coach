@@ -1,9 +1,14 @@
 class Api::SleepsController < ApplicationController
-  before_action :authenticate_user
+  # before_action :authenticate_user
 
   def index
     @sleeps = current_user.sleeps
     render 'index.json.jbuilder'
+  end
+  
+  def show
+    @sleep = Sleep.find(params[:id])
+    render 'show.json.jbuilder'
   end
 
   def create
@@ -28,17 +33,13 @@ class Api::SleepsController < ApplicationController
     end
   end
 
-  def show
-    @sleep = Sleep.find(params[:id])
-    render 'show.json.jbuilder'
-  end
 
   def update
     @sleep = Sleep.find(params[:id])
 
 
-    @sleep.start_time = params[:start_time] || @sleep.start_time
-    @sleep.end_time = params[:end_time] || @sleep.end_time
+    @sleep.start_time = @sleep.change_start_time(params[:start_time]) || @sleep.start_time
+    @sleep.end_time = @sleep.change_end_time(params[:end_time]) || @sleep.end_time
     @sleep.good_sleep = params[:good_sleep] || @sleep.good_sleep
     @sleep.bath_before_bed = params[:bath_before_bed] || @sleep.bath_before_bed
     @sleep.dark_room = params[:dark_room] || @sleep.dark_room

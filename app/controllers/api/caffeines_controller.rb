@@ -4,7 +4,7 @@ class Api::CaffeinesController < ApplicationController
   def index
       @caffeines = Caffeine.all 
       render 'index.json.jbuilder'
-    end
+  end
 
     def create
       @caffeine = Caffeine.new(
