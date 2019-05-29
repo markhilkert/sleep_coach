@@ -19,6 +19,8 @@ end
 json.formatted do
   json.simple_start_time sleep.simple_start_time
   json.simple_end_time sleep.simple_end_time
+  json.fall_asleep_date sleep.fall_asleep_date
+  json.wake_date sleep.wake_date
 end
 
 json.alcohol do

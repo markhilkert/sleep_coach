@@ -59,4 +59,12 @@ class Sleep < ApplicationRecord
     minutes = self.end_time.min < 10 ? "0" + self.end_time.min.to_s : self.end_time.min.to_s
     hours + ":" + minutes
   end
+
+  def wake_date
+    self.end_time.strftime("%B %d, %Y")
+  end
+
+  def fall_asleep_date
+    self.start_time.strftime("%B %d, %Y")
+  end
 end
