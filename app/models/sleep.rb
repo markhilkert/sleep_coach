@@ -37,13 +37,14 @@ class Sleep < ApplicationRecord
     time_in_bed * 1000 # This is actually miliseconds in bed, need to change this after the presentation
   end
 
-  # If this errors out later, check to make sure this returns a falsey value when start_time or end_time haven't been set.
   def change_start_time(new_time)
+    return nil unless new_time
     hours, minutes = new_time.split(":")
     self.start_time.change(hour: hours, min: minutes)
   end
 
   def change_end_time(new_time)
+    return nil unless new_time
     hours, minutes = new_time.split(":")
     self.end_time.change(hour: hours, min: minutes)
   end
@@ -58,5 +59,13 @@ class Sleep < ApplicationRecord
     hours = self.end_time.hour < 10 ? "0" + self.end_time.hour.to_s : self.end_time.hour.to_s
     minutes = self.end_time.min < 10 ? "0" + self.end_time.min.to_s : self.end_time.min.to_s
     hours + ":" + minutes
+  end
+
+  def wake_date
+    self.end_time.strftime("%B %d, %Y")
+  end
+
+  def fall_asleep_date
+    self.start_time.strftime("%B %d, %Y")
   end
 end
