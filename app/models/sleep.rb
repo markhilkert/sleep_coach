@@ -18,7 +18,7 @@ class Sleep < ApplicationRecord
     time_message = ""
 
       time_message += "#{hours} #{'Hour'.pluralize(hours)}" if hours > 0
-      time_message += ", " if hours > 0 && minutes > 0 
+      time_message += ", " if hours > 0 && minutes > 0
       time_message += "#{minutes} #{"Minute".pluralize(minutes)}" if minutes > 0
       time_message += "no time" if time_message == ""
 
