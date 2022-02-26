@@ -32,3 +32,6 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# Ignore rspec history (for things like --only-failures)
+spec/examples.txt
