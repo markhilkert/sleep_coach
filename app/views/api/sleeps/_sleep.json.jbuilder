@@ -13,7 +13,7 @@ json.user_id sleep.user_id
 json.sleep_date sleep.sleep_date
 if sleep.end_time
   json.time_in_bed sleep.time_in_bed
-  json.hours_in_bed sleep.hours_in_bed
+  json.hours_in_bed sleep.miliseconds_in_bed
 end
 
 json.formatted do
@@ -73,7 +73,7 @@ json.exercises do
       json.id exercise.id
       json.duration exercise.duration
       json.time exercise.time
-    end  
+    end
   end
 end
 
@@ -82,7 +82,7 @@ json.naps do
     json.id nap.id
     json.duration nap.duration
     json.time nap.time
-  end  
+  end
 end
 
 json.relax do
