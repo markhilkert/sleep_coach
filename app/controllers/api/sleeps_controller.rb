@@ -1,11 +1,12 @@
 class Api::SleepsController < ApplicationController
   before_action :authenticate_user
+  # TODO: whoa, so much logic in this controller
 
   def index
     @sleeps = current_user.sleeps
     render 'index.json.jbuilder'
   end
-  
+
   def show
     @sleep = Sleep.find(params[:id])
     render 'show.json.jbuilder'
@@ -25,7 +26,7 @@ class Api::SleepsController < ApplicationController
                         lie_in_bed: params[:lie_in_bed],
                         room_temperature: params[:room_temperature]
                         )
-    
+
     if @sleep.save
       render 'show.json.jbuilder'
     else
@@ -35,8 +36,8 @@ class Api::SleepsController < ApplicationController
 
 
   def update
+    # TODO: strong params
     @sleep = Sleep.find(params[:id])
-
 
     @sleep.start_time = @sleep.change_start_time(params[:start_time]) || @sleep.start_time
     @sleep.end_time = @sleep.change_end_time(params[:end_time]) || @sleep.end_time
