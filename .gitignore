@@ -35,3 +35,6 @@ yarn-debug.log*
 
 # Ignore rspec history (for things like --only-failures)
 spec/examples.txt
+
+# Ignore secrets
+config/secrets.yml
