@@ -103,34 +103,50 @@ class Sleep < ApplicationRecord
     time_in_bed * 1000
   end
 
+  # TODO: what is this?
   def change_start_time(new_time)
     return nil unless new_time
     hours, minutes = new_time.split(":")
     start_time.change(hour: hours, min: minutes)
   end
 
+  # TODO: what is this?
   def change_end_time(new_time)
     return nil unless new_time
     hours, minutes = new_time.split(":")
     end_time.change(hour: hours, min: minutes)
   end
 
+  # TODO: what is this?
   def simple_start_time
     hours = start_time.hour < 10 ? "0" + start_time.hour.to_s : start_time.hour.to_s
     minutes = start_time.min < 10 ? "0" + start_time.min.to_s : start_time.min.to_s
     hours + ":" + minutes
   end
 
+  # TODO: what is this?
   def simple_end_time
     hours = end_time.hour < 10 ? "0" + end_time.hour.to_s : end_time.hour.to_s
     minutes = end_time.min < 10 ? "0" + end_time.min.to_s : end_time.min.to_s
     hours + ":" + minutes
   end
 
+  #
+  # Return the date the sleep ended
+  # Format: Month DD, YYYY, e.g., "February 26, 2022"
+  #
+  # @return [String]
+  #
   def wake_date
     end_time.strftime("%B %d, %Y")
   end
 
+  #
+  # Return the date the Sleep started
+  # Format: Month DD, YYYY, e.g., "February 26, 2022"
+  #
+  # @return [String]
+  #
   def fall_asleep_date
     start_time.strftime("%B %d, %Y")
   end
