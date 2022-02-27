@@ -95,7 +95,7 @@ class Sleep < ApplicationRecord
   # both bad and wrong. Need to change the front-end consumption
   # before fixing that.
   #
-  # @return [<Type>] <description>
+  # @return [Integer] <description>
   #
   def miliseconds_in_bed
 
