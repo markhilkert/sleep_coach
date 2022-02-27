@@ -1,6 +1,5 @@
 class Api::SleepsController < ApplicationController
   before_action :authenticate_user
-  # TODO: whoa, so much logic in this controller
 
   def index
     @sleeps = current_user.sleeps
@@ -13,45 +12,17 @@ class Api::SleepsController < ApplicationController
   end
 
   def create
-    @sleep = Sleep.new(
-                        user_id: current_user.id,
-                        start_time: params[:start_time],
-                        end_time: params[:end_time],
-                        good_sleep: params[:good_sleep],
-                        bath_before_bed: params[:bath_before_bed],
-                        dark_room: params[:dark_room],
-                        cool_room: params[:cool_room],
-                        clock_visible: params[:clock_visible],
-                        electronics_in_room: params[:electronics_in_room],
-                        lie_in_bed: params[:lie_in_bed],
-                        room_temperature: params[:room_temperature]
-                        )
-
-    if @sleep.save
+    if @sleep = Sleep.create(sleep_params)
       render 'show.json.jbuilder'
     else
-      render json: {errors: @sleep.errors.full_messages}, status: :unprocessable_entity
+      render json: { errors: @sleep.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
-
   def update
-    # TODO: strong params
     @sleep = Sleep.find(params[:id])
 
-    @sleep.start_time = @sleep.change_start_time(params[:start_time]) || @sleep.start_time
-    @sleep.end_time = @sleep.change_end_time(params[:end_time]) || @sleep.end_time
-    @sleep.good_sleep = params[:good_sleep] || @sleep.good_sleep
-    @sleep.bath_before_bed = params[:bath_before_bed] || @sleep.bath_before_bed
-    @sleep.dark_room = params[:dark_room] || @sleep.dark_room
-    @sleep.cool_room = params[:cool_room] || @sleep.cool_room
-    @sleep.clock_visible = params[:clock_visible] || @sleep.clock_visible
-    @sleep.electronics_in_room = params[:electronics_in_room] || @sleep.electronics_in_room
-    @sleep.lie_in_bed = params[:lie_in_bed] || @sleep.lie_in_bed
-    @sleep.room_temperature = params[:room_temperature] || @sleep.room_temperature
-    @sleep.user_id = params[:user_id] || @sleep.user_id
-
-    if @sleep.save
+    if @sleep.update(sleep_params)
       render 'show.json.jbuilder'
     else
       render json: {errors: @sleep.errors.full_messages}, status: :unprocessable_entity
@@ -59,23 +30,23 @@ class Api::SleepsController < ApplicationController
   end
 
   def destroy
-    sleep = Sleep.find(params[:id])
-    sleep.destroy
+    Sleep.find(params[:id]).destroy!
     render json: {message: "Successfully removed sleep."}
   end
 
   def destroy_last
-    sleep = current_user.sleeps.last
-    sleep.destroy
+    sleep = current_user.sleeps.last.destroy!
     render json: {message: "Successfully removed sleep."}
   end
 
+  # TODO: move logic to model
   def start
     # Josh Note: Want to make sure you aren't starting multiple sleeps. So, first have this do a get call, read the last sleep, and only run if the last sleep has an end time. For the end button, make sure the last sleep has a start time but no end time.
+    # TODO: is ^^^ already implemented or does it need to be?
     @sleep = current_user.sleeps.new(
-                                      user_id: current_user.id,
-                                      start_time: Time.now
-                                    )
+      user_id: current_user.id,
+      start_time: Time.now
+    )
 
     if @sleep.save
       render 'show.json.jbuilder'
@@ -84,6 +55,7 @@ class Api::SleepsController < ApplicationController
     end
   end
 
+  # TODO: move logic to model
   def end_good
     @sleep = current_user.sleeps.last
     @sleep.end_time = Time.now
@@ -96,6 +68,7 @@ class Api::SleepsController < ApplicationController
     end
   end
 
+  # TODO: move logic to model
   def end_bad
     @sleep = current_user.sleeps.last
     @sleep.end_time = Time.now
@@ -108,6 +81,9 @@ class Api::SleepsController < ApplicationController
     end
   end
 
+  # TODO: ... what does this do?
+  # Anyway should probably move this logic to....
+  # the model!
   def toggle
     sleep = current_user.sleeps.last
 
@@ -126,5 +102,22 @@ class Api::SleepsController < ApplicationController
     else
       render json: {errors: @sleep.errors.full_messages}, status: :unprocessable_entity
     end
+  end
+
+  private
+  def sleep_params
+    params.require(:sleep).permit(
+      :user_id,
+      :start_time,
+      :end_time,
+      :good_sleep,
+      :bath_before_bed,
+      :dark_room,
+      :cool_room,
+      :clock_visible,
+      :electronics_in_room,
+      :lie_in_bed,
+      :room_temperature
+    )
   end
 end
