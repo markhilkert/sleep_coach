@@ -25,7 +25,7 @@ group :development, :test do
   gem 'dead_end'
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'pry'
+  gem 'pry-byebug'
   gem 'rspec-rails'
 end
 
@@ -34,6 +34,8 @@ group :test do
 end
 
 group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
   gem 'listen'
   gem 'web-console'
 end
