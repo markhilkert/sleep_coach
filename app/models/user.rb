@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   # TODO: install devise
-  has_secure_password
   validates :email, presence: true, uniqueness: true
 
   has_many :sleeps

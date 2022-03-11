@@ -1,8 +1,6 @@
 user = User.create!(
                     name: "mark",
                     email: "mark@gmail.com",
-                    password: "password",
-                    password_confirmation: "password"
                     )
 
 sleep = Sleep.create!(

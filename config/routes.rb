@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       post "/toggle" => 'sleeps#toggle'
       delete "/destroy_last" => 'sleeps#destroy_last'
     end
-    resources :users, only: [:index, :show, :create]
   end
+
+  resources :users, only: [:show, :create]
 end
